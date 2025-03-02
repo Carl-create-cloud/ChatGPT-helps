@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+#define ROW 3
+#define COL 3
+
+// Function to search for an element in a 2D array
+void search2DArray(int arr[ROW][COL], int target) {
+    for (int i = 0; i < ROW; i++) {
+        for (int j = 0; j < COL; j++) {
+            if (arr[i][j] == target) {
+                printf("Element %d found at position (%d, %d)\n", target, i, j);
+                return;
+            }
+        }
+    }
+    printf("Element %d not found in the array.\n", target);
+}
+
+int main() {
+    int arr[ROW][COL] = {{5, 2, 9}, {4, 1, 7}, {8, 3, 6}};
+    int target = 7;
+
+    search2DArray(arr, target);
+
+    return 0;
+}
