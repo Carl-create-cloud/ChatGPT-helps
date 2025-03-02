@@ -1,0 +1,53 @@
+#include <stdio.h>
+
+#define ROW 3
+#define COL 3
+
+// Function to swap two elements
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+// Function to sort a row using Bubble Sort
+void sortRow(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                swap(&arr[j], &arr[j + 1]);
+            }
+        }
+    }
+}
+
+// Function to sort each row of the 2D array
+void sort2DArray(int arr[ROW][COL]) {
+    for (int i = 0; i < ROW; i++) {
+        sortRow(arr[i], COL);
+    }
+}
+
+// Function to print the 2D array
+void print2DArray(int arr[ROW][COL]) {
+    for (int i = 0; i < ROW; i++) {
+        for (int j = 0; j < COL; j++) {
+            printf("%d ", arr[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int arr[ROW][COL] = {{5, 2, 9}, {4, 1, 7}, {8, 3, 6}};
+
+    printf("Original Array:\n");
+    print2DArray(arr);
+
+    sort2DArray(arr);
+
+    printf("\nSorted Row-wise Array:\n");
+    print2DArray(arr);
+
+    return 0;
+}
